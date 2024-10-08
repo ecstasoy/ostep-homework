@@ -2,15 +2,14 @@
 // Created by Kunhua Huang on 10/8/24.
 //
 /*
- * Write a program that calls fork(). Before calling fork(), have the
- * main process access a variable (e.g., x) and set its value to something
- * (e.g., 100). What value is the variable in the child process?
- * What happens to the variable when both the child and parent change
- * the value of x?
+ * Now write a program that uses wait() to wait for the child process
+ * to finish in the parent. What does wait() return? What happens if
+ * you use wait() in the child?
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 int main(int argc, char* argv[]) {
     int x = 100;
@@ -22,8 +21,10 @@ int main(int argc, char* argv[]) {
         x = 200;
         printf("Child process PID : %d,\nValue of x : %d\n", getpid(), x);
     } else {
+        int wc = wait(NULL);
         x = 300;
         printf("Parent process PID : %d,\nValue of x : %d\n", getpid(), x);
+        printf("Return value of wait() : %d\n", wc);
     }
 
     return 0;
