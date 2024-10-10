@@ -1,0 +1,21 @@
+Q:  For what types of workloads does SJF deliver the same turnaround times as FIFO?
+A: SJF (Shortest Job First) delivers the same turnaround times as FIFO (First In, First Out)
+    when the jobs have the same length. This is because both schedulers will execute the jobs in the same order.
+
+Q:  For what types of workloads and quantum lengths does SJF deliver the same response times as RR?
+A:  SJF delivers the same response times as RR (Round Robin) when the quantum length is equal to or greater than
+    the length of the shortest job. This is because RR will not preempt a job until its quantum expires,
+    so if the quantum is long enough, SJF and RR will behave the same.
+
+Q:  What happens to response time with SJF as job lengths increase?
+    Can you use the simulator to demonstrate the trend?
+A:  The response time with SJF increases as job lengths increase. This is because SJF always runs
+    the shortest job first, so longer jobs have to wait for shorter jobs to complete.
+
+Q:  What happens to response time with RR as quantum lengths increase?
+    Can you write an equation that gives the worst-case response time, given N jobs?
+A:  The response time with RR increases as quantum lengths increase. This is because a longer quantum means that
+    each job gets to run for a longer time before being preempted, which increases the time it takes for all jobs
+    to get their first turn. The worst-case response time for RR with N jobs and a quantum length of Q is (N-1)*Q.
+    This is because in the worst case, a job could be the last in the round-robin order and would have to wait for all
+    other jobs to use up their quantum before getting its turn
